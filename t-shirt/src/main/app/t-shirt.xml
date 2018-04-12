@@ -9,6 +9,10 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
     <http:listener path="/TshirtService/TshirtServicePort" config-ref="api-httpListenerConfig" doc:name="/TshirtService/TshirtServicePort" />
     <apikit-soap:router config-ref="/TshirtService/TshirtServicePort/api-config" doc:name="SOAP Router"/>
   </flow>
+    <flow name="t-shirtFlow">
+        <http:listener config-ref="api-httpListenerConfig" path="/api" doc:name="HTTP"/>
+        <logger message="hello" level="INFO" doc:name="Logger"/>
+    </flow>
   <flow name="OrderTshirt:/TshirtService/TshirtServicePort/api-config">
         <dw:transform-message doc:name="Transform Message">
             <dw:set-payload><![CDATA[%dw 1.0
